@@ -1,17 +1,18 @@
-package org.gerdoc.model;
+package org.luisdoc.model;
 
-public class Estado {
+public class Municipio {
+
     private Integer id;
     private String nombre;
+    private Estado estado;
 
-    public Estado(){
-
+    public Municipio() {
     }
 
-
-    public Estado(Integer id, String nombre) {
+    public Municipio(Integer id, String nombre, Estado estado) {
         this.id = id;
         this.nombre = nombre;
+        this.estado = estado;
     }
 
     public Integer getId() {
@@ -29,4 +30,13 @@ public class Estado {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
 }

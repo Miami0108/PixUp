@@ -1,10 +1,10 @@
-package org.gerdoc.inicio;
+package org.luisdoc.inicio;
 
 
-import org.gerdoc.util.ReadUtil;
-import org.gerdoc.vista.Ejecutable;
-import org.gerdoc.vista.Menu;
-import org.gerdoc.model.TipoEjecutable;
+import org.luisdoc.util.ReadUtil;
+import org.luisdoc.vista.Ejecutable;
+import org.luisdoc.vista.Menu;
+import org.luisdoc.model.TipoEjecutable;
 
 public class Inicio {
     public static void main(String[] args)

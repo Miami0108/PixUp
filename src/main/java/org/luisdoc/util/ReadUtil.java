@@ -1,7 +1,7 @@
-package org.gerdoc.util;
+package org.luisdoc.util;
 
 import java.util.Scanner;
-import org.gerdoc.vista.Menu;
+import org.luisdoc.vista.Menu;
 public class ReadUtil {
     private Scanner scanner;
     private static ReadUtil readUtil;

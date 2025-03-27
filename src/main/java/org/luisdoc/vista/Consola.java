@@ -1,7 +1,7 @@
-package org.gerdoc.vista;
+package org.luisdoc.vista;
 
-import org.gerdoc.model.Catalogo;
-import org.gerdoc.util.ReadUtil;
+import org.luisdoc.model.Catalogo;
+import org.luisdoc.util.ReadUtil;
 
 public class Consola implements Ejecutable {
     private static Consola consola;

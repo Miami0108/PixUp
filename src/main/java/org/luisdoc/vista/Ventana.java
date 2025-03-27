@@ -1,4 +1,4 @@
-package org.gerdoc.vista;
+package org.luisdoc.vista;
 import javax.swing.*;
 public class Ventana extends JFrame implements Ejecutable{
 

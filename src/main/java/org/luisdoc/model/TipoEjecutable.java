@@ -1,8 +1,8 @@
-package org.gerdoc.model;
+package org.luisdoc.model;
 
-import org.gerdoc.vista.Consola;
-import org.gerdoc.vista.Ejecutable;
-import org.gerdoc.vista.Ventana;
+import org.luisdoc.vista.Consola;
+import org.luisdoc.vista.Ejecutable;
+import org.luisdoc.vista.Ventana;
 
 public enum TipoEjecutable {
     CONSOLA( 1, Consola.getInstance() ),

@@ -1,4 +1,4 @@
-package org.gerdoc.model;
+package org.luisdoc.model;
 
 public enum Catalogo {
     CATALOGO(1),

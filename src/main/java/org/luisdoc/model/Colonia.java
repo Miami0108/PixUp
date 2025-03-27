@@ -1,4 +1,4 @@
-package org.gerdoc.model;
+package org.luisdoc.model;
 
 public class Colonia {
     private Integer id;
