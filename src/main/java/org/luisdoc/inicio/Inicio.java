@@ -1,6 +1,7 @@
 package org.luisdoc.inicio;
 
 
+import org.luisdoc.model.Colonia;
 import org.luisdoc.util.ReadUtil;
 import org.luisdoc.vista.Ejecutable;
 import org.luisdoc.vista.Menu;
@@ -33,8 +34,5 @@ public class Inicio {
                 ejecutable.run( );
             }
         }
-
-
     }
-
 }

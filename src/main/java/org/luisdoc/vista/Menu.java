@@ -24,4 +24,8 @@ public class Menu {
     public static void errorDato(){
         System.out.println("No es un dato válido");
     }
+
+    public static void commit(){
+        System.out.println("jola");
+    }
 }
