@@ -1,6 +1,5 @@
 package org.luisdoc.vista;
 
-import org.luisdoc.model.Catalogo;
 import org.luisdoc.util.ReadUtil;
 
 public class Consola implements Ejecutable {
