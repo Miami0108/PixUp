@@ -1,8 +1,9 @@
 package org.luisdoc.util;
 
 import java.util.Scanner;
-import org.luisdoc.vista.Menu;
-public class ReadUtil {
+
+public class ReadUtil
+{
     private Scanner scanner;
     private static ReadUtil readUtil;
 
@@ -53,7 +54,7 @@ public class ReadUtil {
                 {
                 }
             }
-            Menu.errorDato();
+            System.out.println( "Valor incorrecto, intentelo nuevamente" );
         }
         return null;
     }

@@ -1,34 +1,30 @@
 package org.luisdoc.model;
 
-public enum Catalogo {
-    CATALOGO(1),
-   PENDIENTE(2),
-    SALIR(3),
-    OPCION_ERRONEA(4);
-    private Integer tipo;
+import java.io.Serializable;
 
-    Catalogo(Integer tipo)
+public abstract class Catalogo implements Serializable
+{
+    protected Integer id;
+
+    public Catalogo()
     {
-        this.tipo = tipo;
     }
 
-    public Integer getTipo()
+    public Integer getId()
     {
-        return tipo;
+        return id;
     }
 
-    public static Catalogo getCatalogoById( Integer id )
+    public void setId(Integer id)
     {
-        switch( id )
-        {
-            case 1:
-                return CATALOGO;
-            case 2:
-                return PENDIENTE;
-            case 3:
-                return SALIR;
-            default:
-                return OPCION_ERRONEA;
-        }
+        this.id = id;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Catalogo{" +
+                "id=" + id +
+                '}';
     }
 }
