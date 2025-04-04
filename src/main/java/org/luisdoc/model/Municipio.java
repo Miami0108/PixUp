@@ -1,33 +1,29 @@
 package org.luisdoc.model;
 
-public class Municipio {
+import java.io.Serializable;
 
-    private Integer id;
+public class Municipio extends Catalogo implements Serializable
+{
     private String nombre;
     private Estado estado;
 
-    public Municipio() {
+    public Municipio()
+    {
     }
 
-    public Municipio(Integer id, String nombre, Estado estado) {
-        this.id = id;
+    public Municipio(String nombre, Estado estado)
+    {
         this.nombre = nombre;
         this.estado = estado;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre)
+    {
         this.nombre = nombre;
     }
 
@@ -39,4 +35,14 @@ public class Municipio {
         this.estado = estado;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Municipio {"+
+                "nombre='" + nombre + '\'' +
+                ", id=" + id +
+                ", estado="+estado.getNombre()+
+                "}";
+    }
 }
+

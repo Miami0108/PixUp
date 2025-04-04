@@ -1,34 +1,29 @@
 package org.luisdoc.model;
 
-public class Colonia {
-    private Integer id;
+public class Colonia extends Catalogo
+{
     private String nombre;
     private String cp;
     private Municipio municipio;
 
-    public Colonia() {
+    public Colonia()
+    {
     }
 
-    public Colonia(Integer id, String nombre, String cp, Municipio municipio) {
-        this.id = id;
+    public Colonia(String nombre, String cp, Municipio municipio)
+    {
         this.nombre = nombre;
         this.cp = cp;
         this.municipio = municipio;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre)
+    {
         this.nombre = nombre;
     }
 
@@ -47,4 +42,17 @@ public class Colonia {
     public void setMunicipio(Municipio municipio) {
         this.municipio = municipio;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Colonia{" +
+                "nombre='" + nombre + '\'' +
+                ", id=" + id +
+                ", cp=" + cp +
+                ", municipio=" + municipio.getNombre() +
+                ", estado=" + municipio.getEstado().getNombre() +
+                "}";
+    }
 }
+

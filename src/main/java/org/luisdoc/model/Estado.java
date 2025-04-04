@@ -1,32 +1,37 @@
 package org.luisdoc.model;
 
-public class Estado {
-    private Integer id;
+import java.io.Serializable;
+
+public class Estado extends Catalogo implements Serializable
+{
     private String nombre;
 
-    public Estado(){
-
+    public Estado()
+    {
     }
 
-
-    public Estado(Integer id, String nombre) {
-        this.id = id;
+    public Estado(String nombre)
+    {
         this.nombre = nombre;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
+    public String getNombre()
+    {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(String nombre)
+    {
         this.nombre = nombre;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Estado {"+
+                "nombre='" + nombre + '\'' +
+                ", id=" + id +
+                "}";
+    }
 }
+

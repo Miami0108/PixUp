@@ -2,30 +2,32 @@ package org.luisdoc.vista;
 
 public class Menu {
 
-    public static void menuPrincipal(){
-        System.out.println("Bienvenido a PixUp");
-        System.out.println("Seleccione una opción");
-        System.out.println("1.- Consola");
-        System.out.println("2.- Ventana");
-    }
-
-    public static void menu2(){
-        System.out.println("Ingrese la opción");
-        System.out.println("1.- Catálogo");
-        System.out.println("2.- Pendiente");
-        System.out.println("3.- Salir");
-    }
-
     public static void opcionInvalida( )
     {
-        System.out.println("La opción no es correcta");
+        System.out.println("\t¡ERROR!¡La opción no es correcta!");
     }
 
-    public static void errorDato(){
-        System.out.println("No es un dato válido");
+    public static void seleccionaOpcion( )
+    {
+        System.out.print("> Dame una opción: ");
     }
 
-    public static void commit(){
-        System.out.println("jola");
+    public static void errorDato( )
+    {
+        System.out.println("\t¡ERROR!¡Ese no es un dato válido!");
+    }
+
+    public static void edicionDisco( )
+    {
+        System.out.println("\n1. Título");
+        System.out.println("2. Precio");
+        System.out.println("3. Número de copias en existencia");
+        System.out.println("4. Descuento");
+        System.out.println("5. Fecha de lanzamiento");
+        System.out.println("6. Imagen");
+        System.out.println("7. Disquera");
+        System.out.println("8. Artista");
+        System.out.println("9. Género musical");
     }
 }
+
