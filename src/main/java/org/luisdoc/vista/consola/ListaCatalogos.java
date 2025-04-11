@@ -1,9 +1,7 @@
 package org.luisdoc.vista.consola;
-
 import org.luisdoc.vista.Ejecutable;
 import org.luisdoc.vista.LeerAcciones;
 import org.luisdoc.vista.Menu;
-import org.luisdoc.vista.consola.*;
 
 public class ListaCatalogos extends LeerAcciones
 {
@@ -35,7 +33,6 @@ public class ListaCatalogos extends LeerAcciones
     {
         return 1;
     }
-
     @Override
     public int valorMaxMenu()
     {
@@ -68,3 +65,4 @@ public class ListaCatalogos extends LeerAcciones
         }
     }
 }
+

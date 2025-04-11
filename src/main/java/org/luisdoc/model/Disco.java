@@ -10,13 +10,21 @@ public class Disco extends Catalogo
     private String imagen;
     private Disquera disquera;
     private Artista artista;
-    private GeneroMusical generoMusical;
+    private Genero_Musical generoMusical;
 
     public Disco()
     {
     }
 
-    public Disco(String tituloDisco, double precio, int existencias, double descuento, String fechaLanzamiento, String imagen, Disquera disquera, Artista artista, GeneroMusical generoMusical)
+    public Disco(String tituloDisco,
+                 double precio,
+                 int existencias,
+                 double descuento,
+                 String fechaLanzamiento,
+                 String imagen,
+                 Disquera disquera,
+                 Artista artista,
+                 Genero_Musical generoMusical)
     {
         this.tituloDisco = tituloDisco;
         this.precio = precio;
@@ -34,19 +42,9 @@ public class Disco extends Catalogo
         return tituloDisco;
     }
 
-    public void setTituloDisco(String tituloDisco)
-    {
-        this.tituloDisco = tituloDisco;
-    }
-
     public double getPrecio()
     {
         return precio;
-    }
-
-    public void setPrecio(double precio)
-    {
-        this.precio = precio;
     }
 
     public int getExistencias()
@@ -54,19 +52,9 @@ public class Disco extends Catalogo
         return existencias;
     }
 
-    public void setExistencias(int existencias)
-    {
-        this.existencias = existencias;
-    }
-
     public double getDescuento()
     {
         return descuento;
-    }
-
-    public void setDescuento(double descuento)
-    {
-        this.descuento = descuento;
     }
 
     public String getFechaLanzamiento()
@@ -74,19 +62,9 @@ public class Disco extends Catalogo
         return fechaLanzamiento;
     }
 
-    public void setFechaLanzamiento(String fechaLanzamiento)
-    {
-        this.fechaLanzamiento = fechaLanzamiento;
-    }
-
     public String getImagen()
     {
         return imagen;
-    }
-
-    public void setImagen(String imagen)
-    {
-        this.imagen = imagen;
     }
 
     public Disquera getDisquera()
@@ -94,14 +72,49 @@ public class Disco extends Catalogo
         return disquera;
     }
 
-    public void setDisquera(Disquera disquera)
-    {
-        this.disquera = disquera;
-    }
-
     public Artista getArtista()
     {
         return artista;
+    }
+
+    public Genero_Musical getGeneroMusical()
+    {
+        return generoMusical;
+    }
+
+    public void setTituloDisco(String tituloDisco)
+    {
+        this.tituloDisco = tituloDisco;
+    }
+
+    public void setPrecio(double precio)
+    {
+        this.precio = precio;
+    }
+
+    public void setExistencias(int existencias)
+    {
+        this.existencias = existencias;
+    }
+
+    public void setDescuento(double descuento)
+    {
+        this.descuento = descuento;
+    }
+
+    public void setFechaLanzamiento(String fechaLanzamiento)
+    {
+        this.fechaLanzamiento = fechaLanzamiento;
+    }
+
+    public void setImagen(String imagen)
+    {
+        this.imagen = imagen;
+    }
+
+    public void setDisquera(Disquera disquera)
+    {
+        this.disquera = disquera;
     }
 
     public void setArtista(Artista artista)
@@ -109,12 +122,7 @@ public class Disco extends Catalogo
         this.artista = artista;
     }
 
-    public GeneroMusical getGeneroMusical()
-    {
-        return generoMusical;
-    }
-
-    public void setGeneroMusical(GeneroMusical generoMusical)
+    public void setGeneroMusical(Genero_Musical generoMusical)
     {
         this.generoMusical = generoMusical;
     }
@@ -136,3 +144,4 @@ public class Disco extends Catalogo
                 '}';
     }
 }
+

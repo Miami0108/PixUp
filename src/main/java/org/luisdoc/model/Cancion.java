@@ -1,4 +1,5 @@
 package org.luisdoc.model;
+
 public class Cancion extends Catalogo
 {
     private String tituloCancion;
@@ -57,3 +58,4 @@ public class Cancion extends Catalogo
                 '}';
     }
 }
+

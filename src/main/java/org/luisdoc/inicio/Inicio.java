@@ -6,9 +6,8 @@ public class Inicio
 {
     public static void main(String[] args)
     {
-        System.out.println("\t<:: PixUp ::>");
+        System.out.println("!Bienvenido a PixUp¡");
         SeleccionEjecutable.getInstance().run();
-        System.out.println("\t¡Hasta pronto!");
+        System.out.println("\t¡Hasta luego, gracias por utilizar PixUp");
     }
 }
-

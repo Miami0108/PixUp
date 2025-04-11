@@ -1,9 +1,7 @@
 package org.luisdoc.vista.consola;
 
 import org.luisdoc.vista.*;
-import org.luisdoc.vista.consola.usuario.ColoniaCatalogo;
-import org.luisdoc.vista.consola.usuario.EstadoCatalogo;
-import org.luisdoc.vista.consola.usuario.MunicipioCatalogo;
+import org.luisdoc.vista.consola.usuario.*;
 
 public class ListaUsuario extends LeerAcciones
 {
@@ -74,3 +72,4 @@ public class ListaUsuario extends LeerAcciones
         }
     }
 }
+

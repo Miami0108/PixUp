@@ -1,12 +1,12 @@
 package org.luisdoc.vista.consola;
-
+import org.luisdoc.jdbc.Conexion;
+import org.luisdoc.jdbc.GenericJdbc;
 import org.luisdoc.model.Catalogo;
 import org.luisdoc.util.ReadUtil;
 import org.luisdoc.vista.LeerAcciones;
 import org.luisdoc.vista.Menu;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.sql.*;
 import java.util.List;
 
 public abstract class GestorCatalogos<T extends Catalogo> extends LeerAcciones
@@ -14,36 +14,42 @@ public abstract class GestorCatalogos<T extends Catalogo> extends LeerAcciones
     protected List<T> list;
     protected T t;
     protected boolean flag2;
-    protected File file;
+    protected GenericJdbc<T> genericJdbc;
 
-    public GestorCatalogos()
+    public GestorCatalogos(GenericJdbc<T> genericJdbc)
     {
-        list = new ArrayList<>();
-    }
-
-    public boolean isListaEmpty()
-    {
-        return list.isEmpty();
+        this.genericJdbc = genericJdbc;
+        Conexion conexion = new Conexion() {};
+        Connection connection = conexion.getConnection();
     }
 
     public abstract T newT();
     public abstract boolean processNewT(T t);
-    public abstract void processEditT(T t);
+    public abstract void edit(T t);
+
+    public void print()
+    {
+        List<T> list = genericJdbc.findAll();
+        if(list.isEmpty())
+        {
+            System.out.println("> No hay elementos registrados.");
+        }
+        list.stream().forEach(System.out::println);
+    }
 
     public void add( )
     {
         t = newT( );
         if(processNewT( t ))
         {
-            t.setId( list.size()+1 );
-            list.add( t );
             System.out.println("> Elemento añadido con éxito.");
         }
     }
 
     public void remove( )
     {
-        if( isListaEmpty( ) )
+        List<T> list = genericJdbc.findAll();
+        if( list.isEmpty( ) )
         {
             System.out.println( ">  No hay elementos para eliminar." );
             return;
@@ -51,7 +57,7 @@ public abstract class GestorCatalogos<T extends Catalogo> extends LeerAcciones
         flag2 = true;
         while ( flag2 )
         {
-            print( );
+            list.stream().forEach(System.out::println);
             System.out.print( "> Ingrese el ID del elemento a eliminar: " );
             t = list.stream().filter( e -> e.getId().equals( ReadUtil.readInt( ) ) ).findFirst().orElse( null );
             if( t==null )
@@ -60,103 +66,27 @@ public abstract class GestorCatalogos<T extends Catalogo> extends LeerAcciones
             }
             else
             {
-                list.remove( t );
+                if(genericJdbc.delete(t))
+                {
+                    System.out.println( "> Elemento eliminado con éxito." );
+                }
                 flag2 = false;
-                System.out.println( "> Elemento eliminado con éxito." );
             }
         }
     }
 
-    public void edit( )
+    public void findById()
     {
-        if( isListaEmpty( ) )
+        System.out.print("> Ingresa un ID para buscar: ");
+        t = genericJdbc.findById( ReadUtil.readInt() );
+
+        if(t!=null)
         {
-            System.out.println( "> No hay elementos para editar." );
-            return;
+            System.out.println(t);
         }
-        flag2 = true;
-        while ( flag2 )
+        else
         {
-            print( );
-            System.out.print( "> Ingrese el ID del elemento a editar: " );
-            t = list.stream().filter( e -> e.getId().equals( ReadUtil.readInt( ) ) ).findFirst().orElse( null );
-            if( t == null )
-            {
-                System.out.println( "> ID incorrecto, inténtelo nuevamente" );
-            }
-            else
-            {
-                processEditT( t );
-                flag2 = false;
-                System.out.println( "> Elemento modificado con éxito." );
-            }
-        }
-    }
-
-    public void print( )
-    {
-        if(isListaEmpty())
-        {
-            System.out.println("> No hay elementos en el catálogo.");
-        }
-        list.forEach(System.out::println);
-    }
-
-    public abstract File getFile( );
-
-    private void saveOnFile()
-    {
-        ObjectOutputStream oos = null;
-        FileOutputStream fos = null;
-
-        try
-        {
-            if(isListaEmpty())
-            {
-                System.out.println("> No hay elementos para guardar.");
-                return;
-            }
-            file = getFile( );
-            fos = new FileOutputStream( file );
-            oos = new ObjectOutputStream( fos );
-
-            oos.writeObject( list );
-
-            oos.close();
-            fos.close();
-
-            System.out.println("> Datos guardados con éxito.");
-        }
-        catch (IOException e) {
-            System.err.println("> Error al guardar: "+e.getMessage());
-        }
-    }
-
-    private void readFromFile()
-    {
-        ObjectInputStream ois = null;
-        FileInputStream fis = null;
-
-        try
-        {
-            file = getFile( );
-
-            fis = new FileInputStream( file );
-            ois = new ObjectInputStream( fis );
-
-            list = (List<T>) ois.readObject();
-
-            ois.close();
-            fis.close();
-
-            System.out.println("> Datos cargados con éxito.");
-        }
-        catch (IOException e) {
-            System.err.println("> Error al cargar: "+e.getMessage());
-        }
-        catch (ClassNotFoundException e)
-        {
-            throw new RuntimeException(e);
+            System.out.println("> No existe un elemento con dicho ID.");
         }
     }
 
@@ -169,9 +99,8 @@ public abstract class GestorCatalogos<T extends Catalogo> extends LeerAcciones
         System.out.println("2.- Eliminar");
         System.out.println("3.- Editar");
         System.out.println("4.- Imprimir elementos en lista");
-        System.out.println("5.- Guardar en archivo");
-        System.out.println("6.- Leer en archivo");
-        System.out.println("7.- Salir");
+        System.out.println("5.- Obtener por su ID");
+        System.out.println("6.- Salir");
         Menu.seleccionaOpcion();
     }
 
@@ -184,7 +113,7 @@ public abstract class GestorCatalogos<T extends Catalogo> extends LeerAcciones
     @Override
     public int valorMaxMenu()
     {
-        return 7;
+        return 6;
     }
 
     @Override
@@ -199,20 +128,16 @@ public abstract class GestorCatalogos<T extends Catalogo> extends LeerAcciones
                 remove( );
                 break;
             case 3:
-                edit( );
+                edit( t );
                 break;
             case 4:
                 print( );
                 break;
             case 5:
-                saveOnFile();
-                break;
-            case 6:
-                readFromFile();
+                findById( );
                 break;
             default:
                 Menu.opcionInvalida();
         }
     }
-
 }

@@ -1,13 +1,14 @@
 package org.luisdoc.model;
-public class GeneroMusical extends Catalogo
+
+public class Genero_Musical extends Catalogo
 {
     private String genero;
 
-    public GeneroMusical()
+    public Genero_Musical()
     {
     }
 
-    public GeneroMusical(String genero)
+    public Genero_Musical(String genero)
     {
         this.genero = genero;
     }
@@ -25,9 +26,10 @@ public class GeneroMusical extends Catalogo
     @Override
     public String toString()
     {
-        return "GeneroMusical{" +
+        return "Genero_Musical{" +
                 "genero='" + genero + '\'' +
                 ", id=" + id +
                 '}';
     }
 }
+

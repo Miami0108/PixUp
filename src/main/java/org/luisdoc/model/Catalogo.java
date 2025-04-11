@@ -1,8 +1,7 @@
 package org.luisdoc.model;
-
 import java.io.Serializable;
 
-public abstract class  Catalogo implements Serializable
+public abstract class Catalogo implements Serializable
 {
     protected Integer id;
 

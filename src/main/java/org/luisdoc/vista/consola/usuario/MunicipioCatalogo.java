@@ -1,16 +1,18 @@
 package org.luisdoc.vista.consola.usuario;
-
+import org.luisdoc.jdbc.GenericJdbc;
+import org.luisdoc.jdbc.impl.EstadoJdbcImpl;
+import org.luisdoc.jdbc.impl.MunicipioJdbcImpl;
 import org.luisdoc.model.Estado;
 import org.luisdoc.model.Municipio;
 import org.luisdoc.util.ReadUtil;
 import org.luisdoc.vista.consola.GestorCatalogos;
 
-import java.io.File;
+import java.util.List;
 
 public class MunicipioCatalogo extends GestorCatalogos<Municipio>
 {
     private static MunicipioCatalogo municipioCatalogo;
-    private EstadoCatalogo estadoCatalogo;
+    private static final GenericJdbc<Municipio> municipioJdbc = MunicipioJdbcImpl.getInstance();
 
     public static MunicipioCatalogo getInstance( )
     {
@@ -23,8 +25,7 @@ public class MunicipioCatalogo extends GestorCatalogos<Municipio>
 
     private MunicipioCatalogo( )
     {
-        super();
-        estadoCatalogo = EstadoCatalogo.getInstance();
+        super(MunicipioJdbcImpl.getInstance());
     }
 
     @Override
@@ -39,59 +40,31 @@ public class MunicipioCatalogo extends GestorCatalogos<Municipio>
         System.out.print("> Teclee el nombre del municipio: ");
         municipio.setNombre( ReadUtil.read() );
 
-        Estado estado = estadoCatalogo.getEstadoById();
+        EstadoJdbcImpl estadoJdbc = EstadoJdbcImpl.getInstance();
+        List<Estado> list = estadoJdbc.findAll();
+        list.stream().forEach(System.out::println);
+        System.out.print("> Teclee el ID del estado al que pertenece: ");
 
+        Estado estado = EstadoJdbcImpl.getInstance().findById(ReadUtil.readInt());
         if(estado==null)
         {
             return false;
         }
         municipio.setEstado(estado);
+        municipioJdbc.save(municipio);
         return true;
     }
 
     @Override
-    public void processEditT(Municipio municipio)
+    public void edit(Municipio municipio)
     {
-        System.out.println("\n> ID del municipio siendo editado: "+municipio.getId());
-        System.out.println("> Municipio siendo editado: "+municipio.getNombre());
+        List<Municipio> list = municipioJdbc.findAll();
+        list.stream().forEach(System.out::println);
+        System.out.print("> Ingrese el ID del municipio a editar: ");
+        municipio.setId( ReadUtil.readInt() );
         System.out.print("> Ingrese el nuevo nombre del municipio: ");
         municipio.setNombre( ReadUtil.read() );
-
-        System.out.println("> Ingrese el ID del nuevo estado para este municipio: ");
-        Estado estado = estadoCatalogo.getEstadoById();
-
-        if(estado==null)
-        {
-            System.out.println("> Estado no encontrado. No se pudo actualizar el estado del municipio, compruébelo e inténtelo de nuevo.");
-        }
-        else
-        {
-            municipio.setEstado(estado);
-        }
-    }
-
-    public Municipio getMunicipioById() {
-        if (isListaEmpty()) {
-            System.out.println("> No hay municipios registrados.");
-            return null;
-        }
-        while (true) {
-            System.out.print("> Ingrese el ID del municipio: ");
-            int id = ReadUtil.readInt();
-            Municipio municipio = list.stream()
-                    .filter(e -> e.getId().equals(id))
-                    .findFirst()
-                    .orElse(null);
-            if (municipio != null) {
-                return municipio;
-            }
-            System.out.println("> ID incorrecto, inténtelo nuevamente.");
-        }
-    }
-
-    @Override
-    public File getFile() {
-        return new File("./src/main/fileStorage/Municipios.list" );
+        municipioJdbc.update(municipio);
     }
 }
 

@@ -1,5 +1,4 @@
 package org.luisdoc.vista;
-
 import org.luisdoc.util.ReadUtil;
 
 public abstract class LeerAcciones implements Ejecutable
