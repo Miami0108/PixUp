@@ -52,7 +52,7 @@ class EstadoJdbcImplTest
     {
         GenericJdbc<Estado> estadoJdbc = EstadoJdbcImpl.getInstance();
         Estado estado = new Estado();
-        estado.setId(5);
+        estado.setId(3);
         assertTrue(estadoJdbc.delete(estado));
     }
 
