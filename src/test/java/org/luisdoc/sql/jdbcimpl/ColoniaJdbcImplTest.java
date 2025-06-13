@@ -1,10 +1,9 @@
-package org.luisdoc.jdbc.impl;
+package org.luisdoc.sql.jdbcimpl;
 
-import org.luisdoc.jdbc.GenericJdbc;
+import org.luisdoc.sql.GenericJdbc;
 import org.luisdoc.model.Colonia;
 import org.luisdoc.model.Municipio;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -33,11 +32,11 @@ class ColoniaJdbcImplTest
     {
         GenericJdbc<Colonia> coloniaJdbc = ColoniaJdbcImpl.getInstance();
         Colonia colonia = new Colonia();
-        colonia.setNombre("Colonia 3");
+        colonia.setNombre("Colonia 1");
         colonia.setCp("23124");
 
         Municipio municipio = new Municipio();
-        municipio.setId(1);
+        municipio.setId(4);
         colonia.setMunicipio(municipio);
 
         assertTrue(coloniaJdbc.save(colonia));
@@ -48,8 +47,8 @@ class ColoniaJdbcImplTest
     {
         GenericJdbc<Colonia> coloniaJdbc = ColoniaJdbcImpl.getInstance();
         Colonia colonia = new Colonia();
-        colonia.setNombre("Colonia3");
-        colonia.setId(3);
+        colonia.setNombre("Colonia2");
+        colonia.setId(1);
 
         assertTrue(coloniaJdbc.update(colonia));
     }
@@ -68,10 +67,10 @@ class ColoniaJdbcImplTest
     void findById()
     {
         GenericJdbc<Colonia> coloniaJdbc = ColoniaJdbcImpl.getInstance();
-        Colonia colonia = coloniaJdbc.findById(2);
+        Colonia colonia = coloniaJdbc.findById(1);
 
         assertNotNull(colonia);
-        assertEquals(2, colonia.getId());
+        assertEquals(1, colonia.getId());
 
         System.out.println(colonia.getNombre());
     }

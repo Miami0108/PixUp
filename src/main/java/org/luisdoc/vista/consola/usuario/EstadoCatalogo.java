@@ -1,6 +1,6 @@
 package org.luisdoc.vista.consola.usuario;
-import org.luisdoc.jdbc.GenericJdbc;
-import org.luisdoc.jdbc.impl.EstadoJdbcImpl;
+import org.luisdoc.sql.GenericJdbc;
+import org.luisdoc.sql.jdbcimpl.EstadoJdbcImpl;
 import org.luisdoc.model.Estado;
 import org.luisdoc.util.ReadUtil;
 import org.luisdoc.vista.consola.GestorCatalogos;

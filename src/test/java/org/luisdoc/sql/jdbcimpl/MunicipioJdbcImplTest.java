@@ -1,6 +1,6 @@
-package org.luisdoc.jdbc.impl;
+package org.luisdoc.sql.jdbcimpl;
 
-import org.luisdoc.jdbc.GenericJdbc;
+import org.luisdoc.sql.GenericJdbc;
 import org.luisdoc.model.Estado;
 import org.luisdoc.model.Municipio;
 import org.junit.jupiter.api.Test;

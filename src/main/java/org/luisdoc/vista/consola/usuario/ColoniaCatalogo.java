@@ -1,8 +1,8 @@
 package org.luisdoc.vista.consola.usuario;
 
-import org.luisdoc.jdbc.GenericJdbc;
-import org.luisdoc.jdbc.impl.ColoniaJdbcImpl;
-import org.luisdoc.jdbc.impl.MunicipioJdbcImpl;
+import org.luisdoc.sql.GenericJdbc;
+import org.luisdoc.sql.jdbcimpl.ColoniaJdbcImpl;
+import org.luisdoc.sql.jdbcimpl.MunicipioJdbcImpl;
 import org.luisdoc.model.Colonia;
 import org.luisdoc.model.Municipio;
 import org.luisdoc.util.ReadUtil;

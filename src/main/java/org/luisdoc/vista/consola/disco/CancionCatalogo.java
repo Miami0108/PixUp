@@ -1,7 +1,7 @@
 package org.luisdoc.vista.consola.disco;
-import org.luisdoc.jdbc.GenericJdbc;
-import org.luisdoc.jdbc.impl.CancionJdbcImpl;
-import org.luisdoc.jdbc.impl.DiscoJdbcImpl;
+import org.luisdoc.sql.GenericJdbc;
+import org.luisdoc.sql.jdbcimpl.CancionJdbcImpl;
+import org.luisdoc.sql.jdbcimpl.DiscoJdbcImpl;
 import org.luisdoc.model.*;
 import org.luisdoc.util.ReadUtil;
 import org.luisdoc.vista.consola.GestorCatalogos;

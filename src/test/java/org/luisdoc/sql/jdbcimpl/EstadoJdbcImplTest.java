@@ -1,6 +1,6 @@
-package org.luisdoc.jdbc.impl;
+package org.luisdoc.sql.jdbcimpl;
 
-import org.luisdoc.jdbc.GenericJdbc;
+import org.luisdoc.sql.GenericJdbc;
 import org.luisdoc.model.Estado;
 import org.junit.jupiter.api.Test;
 
@@ -43,7 +43,7 @@ class EstadoJdbcImplTest
         GenericJdbc<Estado> estadoJdbc = EstadoJdbcImpl.getInstance();
         Estado estado = new Estado();
         estado.setNombre("Ciudad de mejico");
-        estado.setId(1);
+        estado.setId(5);
         assertTrue(estadoJdbc.update(estado));
     }
 
@@ -52,7 +52,7 @@ class EstadoJdbcImplTest
     {
         GenericJdbc<Estado> estadoJdbc = EstadoJdbcImpl.getInstance();
         Estado estado = new Estado();
-        estado.setId(1);
+        estado.setId(5);
         assertTrue(estadoJdbc.delete(estado));
     }
 
@@ -61,10 +61,10 @@ class EstadoJdbcImplTest
     {
         GenericJdbc<Estado> estadoJdbc = EstadoJdbcImpl.getInstance();
 
-        Estado estado = estadoJdbc.findById(4);
+        Estado estado = estadoJdbc.findById(1);
 
         assertNotNull(estado);
-        assertEquals(4, estado.getId());
+        assertEquals(1, estado.getId());
 
         System.out.println(estado);
     }

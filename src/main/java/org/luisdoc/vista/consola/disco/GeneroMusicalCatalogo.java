@@ -1,6 +1,6 @@
 package org.luisdoc.vista.consola.disco;
-import org.luisdoc.jdbc.GenericJdbc;
-import org.luisdoc.jdbc.impl.Genero_MusicalJdbcImpl;
+import org.luisdoc.sql.GenericJdbc;
+import org.luisdoc.sql.jdbcimpl.Genero_MusicalJdbcImpl;
 import org.luisdoc.model.Genero_Musical;
 import org.luisdoc.util.ReadUtil;
 import org.luisdoc.vista.consola.GestorCatalogos;

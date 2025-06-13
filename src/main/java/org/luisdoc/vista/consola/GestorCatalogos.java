@@ -1,6 +1,6 @@
 package org.luisdoc.vista.consola;
-import org.luisdoc.jdbc.Conexion;
-import org.luisdoc.jdbc.GenericJdbc;
+import org.luisdoc.sql.Conexion;
+import org.luisdoc.sql.GenericJdbc;
 import org.luisdoc.model.Catalogo;
 import org.luisdoc.util.ReadUtil;
 import org.luisdoc.vista.LeerAcciones;
